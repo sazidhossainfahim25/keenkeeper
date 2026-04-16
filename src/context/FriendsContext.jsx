@@ -1,35 +1,3 @@
-// "use client";
-
-// import { createContext, useContext, useEffect, useState } from "react";
-
-// const FriendContext = createContext();
-
-// export const FriendProvider = ({ children }) => {
-//   const [friends, setFriends] = useState([]);
-
-//   useEffect(() => {
-//     async function getData() {
-//       const res = await fetch("/friends.json");
-//       const data = await res.json();
-//       setFriends(data);
-//     }
-//     getData();
-//   }, []);
-
-//   return (
-//     <FriendContext.Provider value={{ friends, setFriends }}>
-//       {children}
-//     </FriendContext.Provider>
-//   );
-// };
-
-// export const useFriends = () => {
-//   return useContext(FriendContext);
-// };
-
-// export default FriendProvider;
-
-
 "use client";
 import { createContext, useContext, useEffect, useState } from "react";
 

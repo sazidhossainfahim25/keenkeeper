@@ -1,5 +1,36 @@
-"use client";
+// "use client";
 
+// import { createContext, useContext, useEffect, useState } from "react";
+
+// const FriendContext = createContext();
+
+// export const FriendProvider = ({ children }) => {
+//   const [friends, setFriends] = useState([]);
+
+//   useEffect(() => {
+//     async function getData() {
+//       const res = await fetch("/friends.json");
+//       const data = await res.json();
+//       setFriends(data);
+//     }
+//     getData();
+//   }, []);
+
+//   return (
+//     <FriendContext.Provider value={{ friends, setFriends }}>
+//       {children}
+//     </FriendContext.Provider>
+//   );
+// };
+
+// export const useFriends = () => {
+//   return useContext(FriendContext);
+// };
+
+// export default FriendProvider;
+
+
+"use client";
 import { createContext, useContext, useEffect, useState } from "react";
 
 const FriendContext = createContext();
@@ -8,13 +39,30 @@ export const FriendProvider = ({ children }) => {
   const [friends, setFriends] = useState([]);
 
   useEffect(() => {
-    async function getData() {
-      const res = await fetch("/friends.json");
-      const data = await res.json();
-      setFriends(data);
+    const savedFriends = localStorage.getItem("my_friends_data");
+
+    if (savedFriends) {
+      setFriends(JSON.parse(savedFriends));
+    } else {
+      async function getData() {
+        try {
+          const res = await fetch("/friends.json");
+          const data = await res.json();
+          setFriends(data);
+          localStorage.setItem("my_friends_data", JSON.stringify(data));
+        } catch (error) {
+          console.error("Error loading data:", error);
+        }
+      }
+      getData();
     }
-    getData();
   }, []);
+
+  useEffect(() => {
+    if (friends.length > 0) {
+      localStorage.setItem("my_friends_data", JSON.stringify(friends));
+    }
+  }, [friends]);
 
   return (
     <FriendContext.Provider value={{ friends, setFriends }}>
@@ -23,50 +71,5 @@ export const FriendProvider = ({ children }) => {
   );
 };
 
-export const useFriends = () => {
-  return useContext(FriendContext);
-};
-
+export const useFriends = () => useContext(FriendContext);
 export default FriendProvider;
-
-// "use client";
-
-// import { createContext, useContext, useEffect, useState } from "react";
-
-
-// const FriendsContext = createContext();
-
-// export const FriendProvider = ({ children }) => {
-//   const [friends, setFriends] = useState([]);
-
-//   useEffect(() => {
-//     async function getData() {
-//       try {
-//         const res = await fetch("/friends.json");
-//         const data = await res.json();
-//         setFriends(data);
-//       } catch (error) {
-//         console.error("Error fetching data:", error);
-//       }
-//     }
-//     getData();
-//   }, []);
-
-//   return (
-   
-//     <FriendsContext.Provider value={{ friends, setFriends }}>
-//       {children}
-//     </FriendsContext.Provider>
-//   );
-// };
-
-
-// export const useFriends = () => {
-//   const context = useContext(FriendsContext);
-//   if (!context) {
-//     throw new Error("useFriends must be used within a FriendProvider");
-//   }
-//   return context;
-// };
-
-// export default FriendProvider;

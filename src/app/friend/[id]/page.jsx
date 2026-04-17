@@ -8,13 +8,16 @@ import { MdCall, MdDeleteOutline } from "react-icons/md";
 import { useParams } from "next/navigation";
 import { useFriends } from "@/context/FriendsContext";
 import toast from "react-hot-toast"
+import { notFound } from "next/navigation";
 
 const DetailPage = () => {
   const { id } = useParams();
   const { friends, setFriends} = useFriends();
 
   const friend = friends.find((f) => f.id === Number(id));
-
+    if (!friend) {
+    notFound();
+  }
     const handleCheckIn = (type) => {
   if (!friend) return;
 
@@ -155,4 +158,3 @@ const DetailPage = () => {
 };
 
 export default DetailPage;
-

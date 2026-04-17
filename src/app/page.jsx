@@ -5,8 +5,8 @@ import React from "react";
 const HomePage = () => {
   return (
     <>
-      <Banner></Banner>
-      <FriendCard></FriendCard>
+      <Banner/>
+      <FriendCard/> 
     </>
   );
 };

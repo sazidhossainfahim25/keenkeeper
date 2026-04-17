@@ -17,7 +17,7 @@ export default function FriendCard() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 px-1 py-4">
           {friends?.map((friend) => (
             <Link key={friend.id} href={`/friend/${friend.id}`}>
-              <div className="bg-gray-300 p-4 rounded-xl shadow text-center cursor-pointer transition-all duration-300 ease-in-out hover:scale-105">
+              <div className="bg-gray-100 p-4 rounded-xl shadow text-center cursor-pointer transition-all duration-300 ease-in-out hover:scale-105">
 
                 <img
                   src={friend.picture}

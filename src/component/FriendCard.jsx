@@ -1,10 +1,11 @@
 "use client";
 import { useFriends } from "@/context/FriendsContext";
 import Link from "next/link";
+import Loading from "./Loading";
 export default function FriendCard() {
   const { friends, loading } = useFriends();
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Loading/>;
 
   return (
     <section>

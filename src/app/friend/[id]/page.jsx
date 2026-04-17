@@ -133,19 +133,19 @@ const DetailPage = () => {
             <div className="grid lg:grid-cols-3 gap-2 grid-cols-1 p-8">
               <button 
               onClick={() => handleCheckIn("Call")}
-              className="flex flex-col items-center justify-center shadow-sm bg-[#F8FAFC] px-4 py-2 rounded">
+              className="flex flex-col items-center justify-center shadow-sm bg-[#F8FAFC] px-4 py-2 rounded cursor-pointer transition-all duration-300 ease-in-out hover:scale-110 text-blue-600">
                 <MdCall className="text-2xl" />
                 <span>Call</span>
               </button>
               <button 
               onClick={() => handleCheckIn("Text")}
-              className=" flex flex-col items-center justify-center shadow-sm bg-[#F8FAFC] px-4 py-2 rounded">
+              className=" flex flex-col items-center justify-center shadow-sm bg-[#F8FAFC] px-4 py-2 rounded  cursor-pointer transition-all duration-300 ease-in-out hover:scale-110 text-green-600">
                 <IoMdText className="text-2xl" />
                 <span>Text</span>
               </button>
               <button 
               onClick={() => handleCheckIn("Video")}
-              className=" flex flex-col items-center justify-center shadow-sm bg-[#F8FAFC] px-4 py-2 rounded">
+              className=" flex flex-col items-center justify-center shadow-sm bg-[#F8FAFC] px-4 py-2 rounded cursor-pointer transition-all duration-300 ease-in-out hover:scale-110  text-red-500">
                 <FaVideo className="text-2xl" />
                 <span>Video</span>
               </button>
